@@ -1,14 +1,14 @@
 {
-  "name": "drefined/php-zipkin",
+  "name": "shlj/php-zipkin",
   "type": "library",
   "description": "Zipkin's PHP tracer library",
   "keywords": ["zipkin", "php", "tracing", "tracer"],
-  "homepage": "https://github.com/drefined/php-zipkin",
+  "homepage": "https://github.com/shlj/php-zipkin",
   "license": "MIT",
   "authors": [
     {
-      "name": "David Phruksukarn",
-      "email": "d.refined@gmail.com"
+      "name": "songhang",
+      "email": "songhang1992@gmail.com"
     }
   ],
   "autoload": {
