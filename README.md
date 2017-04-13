@@ -75,6 +75,29 @@ return [
 ];
 ```
 
+### Lumen integration (simple)
+
+Add middleware and service provider in proper locations.
+
+```php
+<?php // lumen-project/app/bootstrap/app.php
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+    ...
+    $app->middleware([
+        ...
+        \Drefined\Zipkin\Instrumentation\Lumen\Middleware\EnableZipkinTracing::class
+    ]);
+    
+    ...
+    // $app->register(App\Providers\AppServiceProvider::class);
+    $app->register(\Drefined\Zipkin\Instrumentation\Lumen\Providers\ZipkinTracingServiceProvider::class);
+
+
+```
+
+
 ## Todo
 
 * Add Complete Laravel integration (currently supports a simple implementation without app environment configuration)
