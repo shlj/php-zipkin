@@ -11,7 +11,7 @@ Incomplete, only has one transport with zero integrations. This library contains
 The recommended way to install PHP-Zipkin is through [Composer](https://getcomposer.org/)
 
 ```bash
-composer require shlj/php-zipkin:^1.1.0
+composer require shlj/php-zipkin:^1.*
 ```
 
 ## Example usage
