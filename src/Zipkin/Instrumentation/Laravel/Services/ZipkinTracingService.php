@@ -14,9 +14,10 @@ class ZipkinTracingService
         Tracer $tracer = null,
         Endpoint $endpoint = null,
         $sampled = 1.0,
-        $debug = false
+        $debug = false,
+        $baseUrl
     ) {
-        $this->trace = new Trace($tracer, $endpoint, $sampled, $debug);
+        $this->trace = new Trace($tracer, $endpoint, $sampled, $debug, $baseUrl);
     }
 
     /**

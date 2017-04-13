@@ -35,7 +35,8 @@ class Trace
         Tracer $tracer = null,
         Endpoint $endpoint = null,
         $sampled = 1.0,
-        $debug = false
+        $debug = false,
+        $baseUrl
     ) {
         $this->traceId = Identifier::generate();
         $this->sampled = $sampled;
@@ -43,7 +44,7 @@ class Trace
 
         if (empty($tracer)) {
             $client       = new Client();
-            $logger       = new HTTPLogger($client);
+            $logger       = new HTTPLogger($client, $baseUrl);
             $this->tracer = new Tracer($logger, $sampled, $debug);
         } else {
             $this->tracer = $tracer;

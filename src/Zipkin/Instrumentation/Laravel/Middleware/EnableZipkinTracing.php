@@ -40,7 +40,7 @@ class EnableZipkinTracing
     {
         $method    = $request->getMethod();
         $uri       = $request->getRequestUri();
-        $query     = $request->query->all();
+        $query     = $request->request->all();
         $ipAddress = $request->server('SERVER_ADDR') ?? '127.0.0.1';
         $port      = $request->server('SERVER_PORT');
         $name      = "{$method} {$uri}";
@@ -49,12 +49,13 @@ class EnableZipkinTracing
         $parentSpanId = $request->header('X-B3-ParentSpanId') ?? null;
         $sampled      = $request->header('X-B3-Sampled') ?? 1.0;
         $debug        = $request->header('X-B3-Flags') ?? false;
+        $baseUrl      = env('ZIPKIN_SERVER_URL') ?? 'http://localhost:9411/api/v1/spans';
 
         /** @var ZipkinTracingService $tracingService */
         $tracingService = $this->app->make(ZipkinTracingService::class);
 
         $endpoint = new Endpoint($ipAddress, $port, 'laravel-app');
-        $tracingService->createTrace(null, $endpoint, $sampled, $debug);
+        $tracingService->createTrace(null, $endpoint, $sampled, $debug, $baseUrl);
 
         $trace = $tracingService->getTrace();
         $trace->createNewSpan($name, null, $spanId, $parentSpanId);
