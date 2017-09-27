@@ -2,6 +2,9 @@
 
 This is an unofficial PHP library for OpenZipkin.
 
+## Require
+- PHP > 7.0
+
 ## Status
 
 Incomplete, only has one transport with zero integrations. This library contains a very minimal implementation for just sending spans to zipkin.
